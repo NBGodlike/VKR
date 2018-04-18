@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  row: 1
+  numseat: 1
+  zone: one
+
+two:
+  row: 1
+  numseat: 1
+  zone: two

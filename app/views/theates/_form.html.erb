@@ -1,0 +1,22 @@
+<%= form_for @theate do |t|%>
+
+  <div class="form-control">
+      <%= t.label :address %>
+      <%= t.text_field :address %>
+  </div>
+
+  <div class="form-control">
+    <%= t.label :telefon %>
+    <%= t.text_field :telefon %>
+  </div>
+
+  <div class="form-control">
+    <%= t.label :name %>
+    <%= t.text_field :name %>
+  </div>
+
+  <div class="form-control">
+    <%= t.submit 'Сохранить' %>
+  </div>
+
+<% end %>
