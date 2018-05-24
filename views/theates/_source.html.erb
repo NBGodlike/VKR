@@ -1,0 +1,17 @@
+<%= link_to 'Изменить', edit_theate_path(@theate)%>
+
+<%= link_to 'Удалить', theate_path(@theate), method: :delete, data: {confirm: 'Вы уверены?'}%>
+
+<%= link_to 'Оставить комментарий',new_theate_comment_path(@theate)%>
+
+<%= link_to 'Просмотреть комментарии',theate_comments_path(@theate) %>
+
+<%= link_to 'Просмотреть руководителя',theate_leaders_path(@theate) %>
+
+<%= link_to 'Указать руководителя',new_theate_leader_path(@theate) %>
+
+<%= link_to 'Создать репертуар',new_theate_repertoire_path(@theate) %>
+
+<%= link_to 'Указать состав',new_theate_actor_path(@theate) %>
+
+<%= link_to 'Просмотреть состав',theate_actors_path(@theate) %>

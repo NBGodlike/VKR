@@ -1,0 +1,32 @@
+<% if @play_ground.errors.any? %>
+    <div class="alert.alrert-danger">
+      <h5><%= t('common.errors')  %></h5>
+      <ul>
+        <% @play_ground.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<%= form_for [:admin, @play_ground], html: { multipart: true } do |pl|%>
+
+    <div class="form-control">
+      <%= pl.label :seats %>
+      <%= pl.text_field :seats %>
+    </div>
+
+    <div class="form-control">
+      <%= pl.label :address %>
+      <%= pl.text_field :address %>
+    </div>
+
+
+  <div class="form-control">
+
+    <%= pl.submit 'Сохранить', class: 'btn btn-primary'%>
+    <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary'%>
+
+  </div>
+
+<% end %>

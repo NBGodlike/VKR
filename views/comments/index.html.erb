@@ -1,0 +1,17 @@
+<h1>Комментарии</h1>
+
+<% @comments.each do |t| %>
+    <section class="comment">
+      <h3><%= t.content%></h3>
+
+
+      <% if current_user.admin? %>
+
+
+
+          <%= link_to 'Удалить', theate_comment_path(@theate, t), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-outline-danger btn-sm'%>
+
+      <% else %>
+<% end %>
+    </section>
+<% end %>

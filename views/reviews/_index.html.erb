@@ -1,0 +1,22 @@
+
+<% @review.each do |l| %>
+    <section class="leader">
+      <p>
+
+        <%= l.surname%>
+        <%= l.name%>
+        <%= l.patronymic%>
+        <%= ": "%>
+        <%= l.content%>
+      </p>
+
+      <% if current_user.admin? %>
+
+          <%= link_to 'Удалить', admin_review_path(@perfomance,l), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-outline-danger btn-sm'%>
+
+      <% else %>
+      <% end %>
+      <p class="last">
+      </p>
+    </section>
+<% end %>

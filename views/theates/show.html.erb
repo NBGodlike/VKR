@@ -1,0 +1,46 @@
+<section class="theate-left">
+
+  <h1><%= @theate.name%></h1>
+
+  <p>
+    <%="Адрес: "%>
+    <%= @theate.address%>
+  </p>
+  <p>
+    <%="Телефон театра: "%>
+    <%= @theate.telefon%>
+  </p>
+
+  <% if current_user.admin? %>
+
+    <%= link_to 'Изменить', edit_admin_theate_path(), class: 'btn btn-outline-primary btn-sm'%>
+    <%= link_to 'Удалить', admin_theate_path(), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-outline-danger btn-sm'%>
+
+  <% else %>
+
+  <% end %>
+  <div>
+    <%=render "leaders/index"%>
+  </div>
+  <% if current_user.admin? %>
+
+      <%= link_to 'Добавить репертуар',new_admin_theate_repertoire_path(@theate), class: 'btn btn-outline-primary btn-sm'%>
+
+
+      <%= link_to 'Указать состав',new_admin_theate_actor_path(@theate), class: 'btn btn-outline-primary btn-sm'%>
+
+
+
+  <% else %>
+  <% end %>
+  <%= link_to 'Прокомментировать',new_theate_comment_path(@theate), class: 'btn btn-outline-primary btn-sm'%>
+
+  <%= link_to 'Просмотреть комментарии',theate_comments_path(@theate), class: 'btn btn-outline-primary btn-sm' %>
+  <%= link_to 'Просмотреть состав',theate_actors_path(@theate), class: 'btn btn-outline-primary btn-sm'%>
+  <%= link_to 'Просмотреть репертуар',theate_repertoires_path(@theate), class: 'btn btn-outline-primary btn-sm'%>
+
+</section>
+
+<section class="theate-right">
+  <%= image_tag @theate.image.url(), class: 'img-show' if @theate.image?%>
+</section>

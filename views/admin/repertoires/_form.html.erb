@@ -1,0 +1,35 @@
+
+<% if @repertoire.errors.any? %>
+    <div class="alert.alrert-danger">
+      <h5><%= t('common.errors')  %></h5>
+      <ul>
+        <% @repertoire.errors.full_messages.each do |message| %>
+          <li> <%= message %> </li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<%= form_for [:admin, @theate, @theate.repertoires.new], html: { multipart: true } do |r|%>
+
+    <div class="form-control">
+      <%= r.label :genre %>
+      <%= r.text_field :genre %>
+    </div>
+
+    <div class="form-control">
+      <%= r.label :name %>
+      <%= r.text_field :name %>
+    </div>
+
+    <div class="form-control">
+      <%= r.label :producer %>
+      <%= r.text_field :producer %>
+    </div>
+
+    <%= r.submit 'Сохранить', class: 'btn btn-primary'%>
+    <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary'%>
+
+  </div>
+
+<% end %>

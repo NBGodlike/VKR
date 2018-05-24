@@ -1,0 +1,51 @@
+
+
+<% if user_signed_in? %>
+
+
+
+    <h2 class="main">Театры Москвы</h2>
+
+    <% @theates.each do |t| %>
+        <article class="theate">
+
+          <section class="theate-top">
+            <h3><%= link_to t.name, theate_path(t), class: 'link' %></h3>
+          </section>
+          <section class="theate-bottom">
+            <div class="like">
+              <h3>
+                <%=t.like_comments.count %>
+                <img class="image-l" src="../images/like.png" >
+              </h3>
+            </div>
+
+          </section>
+          <% if current_user.admin? %>
+              <%= link_to 'Изменить', edit_admin_theate_path(t), class: 'btn btn-outline-primary btn-sm'%>
+              <%= link_to 'Удалить', admin_theate_path(t), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-outline-danger btn-sm'%>
+          <% else %>
+          <% end %>
+
+        </article>
+    <% end %>
+    <% if current_user.admin? %>
+
+        <h3><%= link_to "Новый театр", new_admin_theate_path(), class: 'btn btn-outline-primary btn-sm' %></h3>
+
+    <% else %>
+
+    <% end %>
+
+
+<% else %>
+    <div class="log">
+      <img class="image-log" src="../images/theater.jpg" >
+      <span1>
+
+      </span1>
+      <span>
+        <h3> АИС: "Репертуар московский театров" </h3>
+      </span>
+    </div>
+<% end %>

@@ -1,0 +1,48 @@
+
+<% if @leader.errors.any? %>
+    <div class="alert.alrert-danger">
+      <h5><%= t('common.errors')  %></h5>
+      <ul>
+        <% @leader.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<%= form_for [:admin, @theate, @theate.leaders.new], html: { multipart: true } do |l|%>
+
+    <div class="form-control">
+      <%= l.label :surname %>
+      <%= l.text_field :surname %>
+    </div>
+
+    <div class="form-control">
+      <%= l.label :name %>
+      <%= l.text_field :name %>
+    </div>
+
+    <div class="form-control">
+      <%= l.label :patronymic %>
+      <%= l.text_field :patronymic %>
+    </div>
+
+    <div class="form-control">
+      <%= l.label :telefon %>
+      <%= l.text_field :telefon %>
+    </div>
+
+    <div class="form-control">
+      <%= l.label :job %>
+      <%= l.text_field :job %>
+    </div>
+
+
+    <div>
+
+    <%= l.submit 'Сохранить', class: 'btn btn-primary'%>
+    <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary'%>
+
+  </div>
+
+<% end %>

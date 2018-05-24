@@ -1,0 +1,26 @@
+
+<% @actors.each do |a| %>
+
+    <section class="leader">
+
+
+
+      <p>
+        <%= "Ф.И.О: "%>
+
+        <%= a.surname%>
+        <%= a.name%>
+        <%= a.patronymic%>
+
+      </p>
+
+      <% if current_user.admin? %>
+
+          <%= link_to 'Изменить', edit_admin_theate_actor_path(@theate,a), class: 'btn btn-outline-primary btn-sm'%>
+          <%= link_to 'Удалить', admin_theate_actor_path(@theate,a), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-outline-danger btn-sm'%>
+
+      <% else %>
+
+      <% end %>
+    </section>
+<% end %>

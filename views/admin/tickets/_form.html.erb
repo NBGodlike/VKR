@@ -1,0 +1,35 @@
+
+<% if @ticket.errors.any? %>
+    <div class="alert.alrert-danger">
+      <h5><%= t('common.errors')  %></h5>
+      <ul>
+        <% @ticket.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<%= form_for [:admin, @seat, @seat.tickets.new], html: { multipart: true } do |pl|%>
+
+    <div class="form-control">
+      <%= pl.label :selldate %>
+      <%= pl.datetime_field  :selldate %>
+    </div>
+
+    <div class="form-control">
+      <%= pl.label :numticket %>
+      <%= pl.text_field :numticket %>
+    </div>
+
+    <%= collection_select(:ticket, :perfomance_id, Perfomance.all, :id, :f_name) %>
+
+
+<div>
+
+    <%= pl.submit 'Сохранить', class: 'btn btn-primary'%>
+    <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary'%>
+
+  </div>
+
+<% end %>

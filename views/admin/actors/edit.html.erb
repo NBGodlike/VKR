@@ -1,0 +1,41 @@
+<h1>Редактирование актера</h1>
+
+
+<% if @actor.errors.any? %>
+    <div class="alert.alrert-danger">
+      <h5><%= t('common.errors')  %></h5>
+      <ul>
+        <% @actor.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<%= form_for [:admin, @actor] do |a|%>
+
+    <div class="form-control">
+      <%= a.label :surname %>
+      <%= a.text_field :surname %>
+    </div>
+
+    <div class="form-control">
+      <%= a.label :name %>
+      <%= a.text_field :name %>
+    </div>
+
+    <div class="form-control">
+      <%= a.label :patronymic %>
+      <%= a.text_field :patronymic %>
+    </div>
+
+
+    <div>
+
+
+    <%= a.submit 'Сохранить', class: 'btn btn-primary'%>
+    <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary'%>
+
+    </div>
+
+<% end %>

@@ -1,0 +1,40 @@
+<% if @theate.errors.any? %>
+    <div class="alert.alrert-danger">
+      <h5><%= t('common.errors')  %></h5>
+      <ul>
+        <% @theate.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<%= form_for [:admin, @theate], html: { multipart: true } do |t|%>
+
+  <div class="form-control">
+      <%= t.label :address %>
+      <%= t.text_field :address %>
+  </div>
+
+  <div class="form-control">
+    <%= t.label :telefon %>
+    <%= t.text_field :telefon %>
+  </div>
+
+  <div class="form-control">
+    <%= t.label :name %>
+    <%= t.text_field :name %>
+  </div>
+
+  <div class="form-control">
+      <%= t.file_field :image %>
+  </div>
+
+  <div class="form-control">
+
+    <%= t.submit 'Сохранить', class: 'btn btn-primary'%>
+    <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary'%>
+
+  </div>
+
+<% end %>

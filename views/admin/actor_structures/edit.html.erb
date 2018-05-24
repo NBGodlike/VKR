@@ -1,0 +1,32 @@
+
+<% if @actstr.errors.any? %>
+    <div class="alert.alrert-danger">
+      <h5><%= t('common.errors')  %></h5>
+      <ul>
+        <% @actstr.errors.full_messages.each do |message| %>
+            <li> <%= message %> </li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<%= form_for [:admin, @acstr], html: { multipart: true } do |act|%>
+
+    <div class="form-control">
+      <%= act.label :role %>
+      <%= act.text_field :role %>
+    </div>
+
+
+
+
+    <%= collection_select(:actor_structure, :actor_id, Actor.all, :id, :full_name) %>
+
+
+<div>
+    <%= act.submit 'Сохранить', class: 'btn btn-primary'%>
+    <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary'%>
+
+    </div>
+
+<% end %>

@@ -1,0 +1,31 @@
+
+
+<%  @zones.each do |pl| %>
+
+
+
+    <section class="leader">
+
+      <p>
+        <%= "Название зоны: "%>
+        <%= pl.number %>
+      </p>
+
+      <p>
+        <%= "Стоимость: "%>
+        <%= pl.price%>
+      </p>
+      <% if current_user.admin? %>
+          <%= link_to 'Изменить', edit_admin_zone_path(@play_ground,pl), class: 'btn btn-outline-primary btn-sm'%>
+          <%= link_to 'Удалить', admin_zone_path(@play_ground,pl), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-outline-danger btn-sm'%>
+          <%= link_to 'Добавить место', new_admin_zone_seat_path(pl), class: 'btn btn-outline-primary btn-sm'%>
+      <% else %>
+      <% end %>
+      <%= link_to 'Просмотреть места', zone_seats_path(pl), class: 'btn btn-outline-primary btn-sm'%>
+
+
+      <p class="last"></p>
+    </section>
+
+
+<% end %>

@@ -1,0 +1,33 @@
+
+<% if @perfomance.errors.any? %>
+    <div class="alert.alrert-danger">
+      <h5><%= t('common.errors')  %></h5>
+      <ul>
+        <% @perfomance.errors.full_messages.each do |message| %>
+            <li> <%= message %> </li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<%= form_for [:admin, @perfomance], html: { multipart: true } do |p|%>
+
+    <div class="form-control">
+      <%= p.label :status %>
+      <%= p.text_field :status %>
+    </div>
+
+    <div class="form-control">
+      <%= p.label :date %>
+      <%= p.datetime_field :date %>
+    </div>
+
+    <%= collection_select(:perfomance, :play_ground_id, PlayGround.all, :id, :address) %>
+
+
+    <%= p.submit 'Сохранить', class: 'btn btn-primary'%>
+    <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary'%>
+
+    </div>
+
+<% end %>

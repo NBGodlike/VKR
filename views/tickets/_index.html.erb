@@ -1,0 +1,36 @@
+
+
+<%  @tickets.each do |pl| %>
+
+
+
+    <section class="leader">
+
+
+      <p>
+        <%= "Название спектакля : "%>
+        <%= pl.rep_name%>
+      </p>
+
+      <p>
+        <%= "Дата: "%>
+        <%= pl.per_date%>
+      </p>
+
+      <p>
+        <%= "Ряд: "%>
+        <%= pl.seat_row%>
+
+        <%= "Место: "%>
+        <%= pl.seat_numseat%>
+      </p>
+      <p>
+
+
+      <%= link_to 'Удалить', admin_ticket_path(pl), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-outline-danger btn-sm'%>
+
+      <p class="last"></p>
+    </section>
+
+
+<% end %>

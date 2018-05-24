@@ -1,0 +1,28 @@
+
+
+<%  @seats.each do |pl| %>
+
+
+
+    <section class="leader">
+
+      <p>
+        <%= "Ряд: "%>
+        <%= pl.row %>
+
+        <%= "Место: "%>
+        <%= pl.numseat%>
+      </p>
+      <% if current_user.admin? %>
+          <%= link_to 'Изменить', edit_admin_seat_path(@zone,pl), class: 'btn btn-outline-primary btn-sm'%>
+          <%= link_to 'Удалить', admin_seat_path(@zone,pl), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-outline-danger btn-sm'%>
+          <%= link_to 'Добавить билет', new_admin_seat_ticket_path(pl), class: 'btn btn-outline-primary btn-sm'%>
+      <% else %>
+      <% end %>
+
+
+      <p class="last"></p>
+    </section>
+
+
+<% end %>

@@ -1,0 +1,32 @@
+
+<% if @seat.errors.any? %>
+    <div class="alert.alrert-danger">
+      <h5><%= t('common.errors')  %></h5>
+      <ul>
+        <% @seat.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<%= form_for [:admin, @seat], html: { multipart: true } do |s|%>
+
+    <div class="form-control">
+      <%= s.label :row %>
+      <%= s.text_field :row %>
+    </div>
+
+    <div class="form-control">
+      <%= s.label :numseat %>
+      <%= s.text_field :numseat %>
+    </div>
+
+    <div>
+
+      <%= s.submit 'Сохранить', class: 'btn btn-primary'%>
+      <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary'%>
+
+    </div>
+
+<% end %>

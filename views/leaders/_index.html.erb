@@ -1,0 +1,28 @@
+
+<% @leader.each do |l| %>
+    <section class="leader">
+      <p>
+        <%= l.job %>
+        <%= ": "%>
+        <%= l.surname%>
+        <%= l.name%>
+        <%= l.patronymic%>
+      </p>
+      <p>
+        <%= "Телефон: "%>
+        <%= l.telefon%>
+      </p>
+      <% if current_user.admin? %>
+        <%= link_to 'Изменить', edit_admin_theate_leader_path(@theate,l), class: 'btn btn-outline-primary btn-sm'%>
+        <%= link_to 'Удалить', admin_theate_leader_path(@theate,l), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-outline-danger btn-sm'%>
+      <% else %>
+      <% end %>
+
+    </section>
+<% end %>
+
+<% if current_user.admin? %>
+
+  <%= link_to 'Новый руководитель', new_admin_theate_leader_path(@theate), class: 'btn btn-outline-primary btn-sm'%>
+<% else %>
+<% end %>

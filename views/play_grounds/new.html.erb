@@ -1,0 +1,17 @@
+<%= form_for @play_ground do |pl|%>
+
+    <div class="form-control">
+      <%= pl.label :seats %>
+      <%= pl.text_field :seats %>
+    </div>
+
+    <div class="form-control">
+      <%= pl.label :address %>
+      <%= pl.text_field :address %>
+    </div>
+
+    <div class="form-control">
+      <%= pl.submit 'Сохранить' %>
+    </div>
+
+<% end %>

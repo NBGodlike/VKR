@@ -1,0 +1,57 @@
+
+
+<%= form_with url: '/repertoires', method: :get, id: "search-form", local: true   do %>
+
+    <div>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Repertoire" %>
+    </div>
+
+    <div>
+    <%= submit_tag "Search" , class: 'btn btn-outline-primary btn-l'%>
+    </div>
+
+<% end %>
+
+<% @reps.each do |r| %>
+
+    <section class="leader">
+
+
+
+
+
+      <p>
+        <%= "Название спектакля: "%>
+        <%= link_to r.name, repertoire_perfomances_path(r), class: 'link' %>
+      </p>
+
+      <p>
+        <%= "Жанр: "%>
+        <%= r.genre%>
+      </p>
+
+      <p>
+        <%= "Постановщик: "%>
+        <%= r.producer %>
+      </p>
+
+      <p>
+        <%= "Название театра: "%>
+        <%= r.first_theate_name %>
+      </p>
+
+      <% if current_user.admin? %>
+          <%= link_to 'Изменить', edit_admin_repertoire_path(r), class: 'btn btn-outline-primary btn-sm'%>
+          <%= link_to 'Удалить', admin_repertoire_path(r), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-outline-danger btn-sm'%>
+          <%= link_to 'Добавить расписание', new_admin_repertoire_perfomance_path(r), class: 'btn btn-outline-primary btn-sm'%>
+      <% else %>
+      <% end %>
+      <%= link_to 'Просмотреть расписание', repertoire_perfomances_path(r), class: 'btn btn-outline-primary btn-sm'%>
+
+      <p class="last">
+
+      </p>
+
+    </section>
+<% end %>
+

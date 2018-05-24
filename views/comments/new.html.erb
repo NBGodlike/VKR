@@ -1,0 +1,19 @@
+<%= form_for [@theate, @theate.comments.new] do |c|%>
+
+    <div class="form-control">
+      <%= c.label :content %>
+      <%= c.text_field :content %>
+    </div>
+
+    <div class="form-control">
+      <%= c.label :like %>
+      <%= c.check_box(:like) %>
+    </div>
+
+
+
+    <div class="form-control">
+      <%= c.submit 'Сохранить' %>
+    </div>
+
+<% end %>

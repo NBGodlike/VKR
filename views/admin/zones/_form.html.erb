@@ -1,0 +1,34 @@
+
+<% if @zone.errors.any? %>
+    <div class="alert.alrert-danger">
+      <h5><%= t('common.errors')  %></h5>
+      <ul>
+        <% @zone.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<%= form_for [:admin, @play_ground, @play_ground.zones.new], html: { multipart: true } do |pl|%>
+
+    <div class="form-control">
+      <%= pl.label :price %>
+      <%= pl.text_field :price %>
+    </div>
+
+    <div class="form-control">
+      <%= pl.label :number %>
+      <%= pl.text_field :number %>
+    </div>
+
+
+
+<div>
+
+    <%= pl.submit 'Сохранить', class: 'btn btn-primary'%>
+    <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary'%>
+
+  </div>
+
+<% end %>

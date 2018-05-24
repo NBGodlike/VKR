@@ -1,0 +1,49 @@
+
+<h1>
+  Расписание спектакля:
+
+    <%= @rep.name %>
+
+</h1>
+
+
+
+<% @perfomances.each do |p| %>
+    <section class="leader">
+
+
+
+
+      <p>
+        <%= "Статус: "%>
+        <%= p.status %>
+      </p>
+      <p>
+        <%= "Дата: "%>
+        <time >
+          <%= p.date.strftime("%Y-%m-%d at %I:%M %p") %>
+        </time>
+      </p>
+
+
+      <p >
+        <%= "Адрес: "%>
+        <%= p.a %>
+      </p>
+      <p class="last">
+      <% if current_user.admin? %>
+          <%= link_to 'Изменить', edit_admin_perfomance_path(p), class: 'btn btn-outline-primary btn-sm'%>
+          <%= link_to 'Удалить', admin_perfomance_path(@rep,p), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-outline-danger btn-sm'%>
+          <%= link_to 'Новая роль', new_admin_perfomance_actor_structure_path(p), class: 'btn btn-outline-primary btn-sm'%>
+          <%= link_to 'Новый отзыв', new_admin_perfomance_review_path(p), class: 'btn btn-outline-primary btn-sm'%>
+          <%= link_to 'Просмотреть билеты', perfomance_tickets_path(p), class: 'btn btn-outline-primary btn-sm'%>
+
+      <% else %>
+      <% end %>
+        <%= link_to 'Просмотреть роли', perfomance_actor_structures_path(p), class: 'btn btn-outline-primary btn-sm'%>
+
+        <%= link_to 'Просмотреть отзывы', perfomance_reviews_path(p), class: 'btn btn-outline-primary btn-sm'%>
+      </p>
+    </section>
+
+<% end %>

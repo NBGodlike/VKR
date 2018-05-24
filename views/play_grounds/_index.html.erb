@@ -1,0 +1,36 @@
+
+<% if current_user.admin? %>
+    <%= link_to 'Создать площадку', new_admin_play_ground_path(), class: 'btn btn-outline-primary btn-sm'%>
+   <% else %>
+<% end %>
+
+
+<%  @play_grounds.each do |pl| %>
+
+    <section class="leader">
+
+
+
+      <p>
+        <%= "Количество мест: "%>
+        <%= pl.seats %>
+      </p>
+
+      <p>
+        <%= "Адресс: "%>
+        <%= pl.address%>
+      </p>
+
+      <% if current_user.admin? %>
+          <%= link_to 'Изменить', edit_admin_play_ground_path(pl), class: 'btn btn-outline-primary btn-sm'%>
+          <%= link_to 'Удалить', admin_play_ground_path(pl), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-outline-danger btn-sm'%>
+          <%= link_to 'Новая зона', new_admin_play_ground_zone_path(pl), class: 'btn btn-outline-primary btn-sm'%>
+
+      <% else %>
+      <% end %>
+      <%= link_to 'Просмотр зон', play_ground_zones_path(pl), class: 'btn btn-outline-primary btn-sm'%>
+
+<p class="last"></p>
+
+    </section>
+<% end %>

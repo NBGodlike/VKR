@@ -1,0 +1,45 @@
+
+<% if @review.errors.any? %>
+    <div class="alert.alrert-danger">
+      <h5><%= t('common.errors')  %></h5>
+      <ul>
+        <% @review.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<%= form_for [:admin, @perfomance, @perfomance.reviews.new], html: { multipart: true } do |l|%>
+
+    <div class="form-control">
+      <%= l.label :surname %>
+      <%= l.text_field :surname %>
+    </div>
+
+    <div class="form-control">
+      <%= l.label :name %>
+      <%= l.text_field :name %>
+    </div>
+
+    <div class="form-control">
+      <%= l.label :patronymic %>
+      <%= l.text_field :patronymic %>
+    </div>
+
+    <div class="form-control">
+      <%= l.label :content %>
+      <%= l.text_field :content %>
+    </div>
+
+
+
+
+<div>
+
+    <%= l.submit 'Сохранить', class: 'btn btn-primary'%>
+    <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary'%>
+
+  </div>
+
+<% end %>
