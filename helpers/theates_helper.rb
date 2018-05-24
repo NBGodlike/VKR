@@ -1,0 +1,2 @@
+module TheatesHelper
+end
