@@ -16,7 +16,7 @@ default: &default
 development:
   adapter: mysql2
   encoding: utf8
-  database: testing
+  database: mostheate
   username: root
   password: root
   host: localhost
